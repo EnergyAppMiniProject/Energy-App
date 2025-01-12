@@ -20,11 +20,11 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ firstname: first, lastname: last, email: email, password: password })
+        body: JSON.stringify({ firstname: firstName, lastname: lastName, email: email, password: password })
     })
     .then(response =>{
         console.log("Response: ", response);
-        response.json();})
+        return response.json();})
     .then(data => {
         console.log("Data from server", data);
         messageDiv.textContent = data.message;
