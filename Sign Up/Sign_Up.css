@@ -48,4 +48,5 @@ button{
     font-size:large;
     color: #49454f;
     margin-top: 0.5em;
+    cursor: pointer;
 }
