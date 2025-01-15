@@ -16,8 +16,10 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     .then(data => {
         messageDiv.textContent = data.message;
         if (data.success) {
+            console.log(data);
             // Redirect to the desired page after successful login
-            window.location.href = '/dashboard'; // Example redirect
+            localStorage.setItem('firstname', data.data.user.firstname);
+            window.location.href = '../Homepage/Homepage.html'; // Example redirect
         } else {
             messageDiv.style.color = "red";
         }

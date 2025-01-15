@@ -1,8 +1,8 @@
 document.getElementById('signupForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const firstName = document.getElementById('first').value;
-    const lastName = document.getElementById('last').value;
+    const firstname = document.getElementById('first').value;
+    const lastname = document.getElementById('last').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm_password').value;
@@ -13,6 +13,7 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         messageDiv.style.color = "red"; // Optionally change color
         return; // Stop form submission
     }
+    localStorage.setItem('firstname', firstname);
 
     // If passwords match, proceed with sending data to the backend
     fetch('https://swecourseproject.onrender.com/auth/signup', {
@@ -20,7 +21,7 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ firstname: firstName, lastname: lastName, email: email, password: password })
+        body: JSON.stringify({ firstname: firstname, lastname: lastname, email: email, password: password })
     })
     .then(response =>{
         console.log("Response: ", response);
@@ -31,6 +32,8 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         if (data.success) {
             messageDiv.style.color = "green";
             document.getElementById('signupForm').reset();
+            console.log("Stored firstname:", localStorage.getItem('firstname'));
+            window.location.href = '../Homepage/Homepage.html';
         } else {
             messageDiv.style.color = "red";
         }

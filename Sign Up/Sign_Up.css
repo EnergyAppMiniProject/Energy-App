@@ -50,3 +50,7 @@ button{
     margin-top: 0.5em;
     cursor: pointer;
 }
+
+.alt{
+    font-size: small;
+}
